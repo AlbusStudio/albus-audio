@@ -1,56 +1,42 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Albus Audio Test</title>
+  <meta charset="UTF-8">
+  <title>Audio Playback + Info</title>
   <style>
     body {
-      font-family: monospace;
-      background: #000;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      font-family: system-ui, sans-serif;
       padding: 2rem;
+      background-color: #f9f9f9;
+      color: #111;
+      max-width: 600px;
+      margin: auto;
     }
-    .info {
+    .meta {
+      font-size: 0.9rem;
+      color: #555;
       margin-bottom: 1rem;
-      font-size: 1rem;
     }
     audio {
+      width: 100%;
       margin-top: 1rem;
     }
   </style>
 </head>
 <body>
-  <div class="info" id="info"></div>
+
+  <h1>Audio Playback + Info</h1>
+
+  <div class="meta">
+    ⏱ Reading time: 3 min<br>
+    🎧 Audio duration: 4:30
+  </div>
+
   <audio controls>
     <source src="/audio/sample.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <script>
-    const text = `This is a short test text to simulate reading time.`;
-    const audioDurationInSeconds = 67;
-
-    function getReadingTime(text) {
-      const wordsPerMinute = 200;
-      const words = text.trim().split(/\s+/).length;
-      const time = Math.ceil(words / wordsPerMinute);
-      return `${time} min read`;
-    }
-
-    function formatAudioDuration(seconds) {
-      const mins = Math.floor(seconds / 60);
-      const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
-      return `${mins}:${secs} min audio`;
-    }
-
-    document.getElementById("info").textContent =
-      `⏱️  ${getReadingTime(text)} / ▶️  ${formatAudioDuration(audioDurationInSeconds)}`;
-  </script>
 </body>
 </html>
